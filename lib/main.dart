@@ -20,18 +20,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-     // home: TabsDemo(title: 'Flutter Demo Home Page'),
+      // home: TabsDemo(title: 'Flutter Demo Home Page'),
       home: TabsDemo(),
     );
   }
 }
-
-
-
-
-
-
-
 
 class TabsDemo extends StatefulWidget {
   @override
@@ -40,41 +33,40 @@ class TabsDemo extends StatefulWidget {
 
 class _TabsDemoState extends State<TabsDemo> {
   TabController _controller;
-List<String> categories = ["a", "b", "c", "d", "e", "f", "g", "h"];
-
+  List<String> categories = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
   @override
   void initState() {
     super.initState();
   }
 
-    @override
-    Widget build(BuildContext ctxt) {
-      return new MaterialApp(
+  @override
+  Widget build(BuildContext ctxt) {
+    return new MaterialApp(
         home: DefaultTabController(
             length: categories.length,
             child: new Scaffold(
-              appBar: new AppBar(
-                title: new Text("Title"),
-                bottom: new TabBar(
-                  isScrollable: true,
-                    tabs: List<Widget>.generate(categories.length, (int index){
-                  print(categories[0]);
-                  return new Tab(icon: Icon(Icons.directions_car), text: "some random text");
-
-                }),
-
-              ),
-            ),
-
-        body: new TabBarView(
-             children: List<Widget>.generate(categories.length, (int index){
-                print(categories[0]);
-                return new Text("again some random text");
-
-             }),
-          )
-       ))
-      );
+                appBar: new AppBar(
+                  title: new Text("Title"),
+                  bottom: new TabBar(
+                    isScrollable: true,
+                    tabs: List<Widget>.generate(categories.length, (int index) {
+                     // print(categories[index]);
+                      return new Tab(
+                          icon: Icon(Icons.directions_car),
+                          text: categories[index]
+                          );
+                    }),
+                  ),
+                ),
+                body: new TabBarView(
+                  children:
+                      List<Widget>.generate(categories.length, (int index) {
+                   // print(categories[0]);
+                    return new Text(
+                      categories[index]
+                    );
+                  }),
+                ))));
   }
 }
